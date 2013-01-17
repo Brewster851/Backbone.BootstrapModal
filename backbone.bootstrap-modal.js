@@ -9,25 +9,21 @@ https://github.com/KingKarl85/Backbone.BootstrapModal
 
 (function(_, Backbone){
 	Backbone.BootstrapModal = Backbone.View.extend({
-		modal:function(opts){
-			var self = this;
-			this.$modal = Backbone.$("<div class='modal fade'></div>");
+		modalTemplate:"<div class='modal'></div>",
+		modal:function(options){
+			this.$modal = Backbone.$(this.modalTemplate);
 			this.$modal.html(this.el);
 
-			this.modalOptions = _.extend({
+			this.options = _.extend({
 				backdrop: 'static',
 				hidden: function(){
-					self.remove();
-					self.removeModal();
+					this.remove();
 				}
-			}, this.modalOptions, opts);
+			}, this.options, opts);
 
-			options = this.modalOptions;
-
-			if(typeof this.modalOptions.fade == "boolean" && !options.fade){
-				this.$modal.removeClass("fade");
-			}
-
+			options = this.options;
+			
+			var self = this;
 			this.$modal.modal(options).on('shown', function(){
 				if(options.shown && options.shown.call){
 					options.shown.call(self);
@@ -48,23 +44,23 @@ https://github.com/KingKarl85/Backbone.BootstrapModal
 
 			return this.$modal;
 		},
-		hideModal:function(){
+		hide:function(){
 			if(this.$modal){
 				this.$modal.modal('hide');
 			}
 		},
-		showModal:function(){
+		show:function(){
 			if(!this.$modal){
 				this.modal({show:false});
 			}
 			this.$modal.modal("show");
 		},
-		showModal:function(){
+		toggle:function(){
 			if(this.$modal){
 				this.$modal.modal('toggle');
 			}
 		},
-		removeModal:function(){
+		remove:function(){
 			if(this.$modal){
 				this.$modal.remove();
 			}
