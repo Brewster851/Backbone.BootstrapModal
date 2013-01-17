@@ -1,3 +1,12 @@
+/*
+
+(c) 2013 Karl Mikkelsen.
+Backbone.BootstrapModal may be freely distributed under the MIT license.
+For all details and documentation:
+https://github.com/KingKarl85/Backbone.BootstrapModal
+
+*/
+
 (function(_, Backbone){
 	Backbone.BootstrapModal = Backbone.View.extend({
 		modal:function(opts){
