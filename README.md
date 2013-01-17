@@ -22,17 +22,13 @@ view.modal(); //wrapper for bootstrap modal
 
 Setting modalOptions on the view will be directly passed through to Bootstrap.Modal(options)
 
-modalOptions has also been extended to allow events callbacks to be set and destory to be set
-
-destroy: true //default to remove the view from DOM and call .remove on the backbone view so when you hide the modal the view cleans up after it self
-
 You can also still send options when calling modal on the view
 
 view.modal({show:false});
 
 ##Bootstrap.modal() events
 
-events are able to be set from modalOptions
+Events are able to be set from modalOptions
 
 modalOptions{
   shown:function(){
@@ -40,7 +36,18 @@ modalOptions{
   }
 }
 
-allowing you to listen to modal events from bootstrap.modal from the view
+Allowing you to listen to modal events from bootstrap.modal from the view
 
+##Defaults
+
+I like to have fade turned on for modal windows and also like the backdrop to be static so I set these to be default.
+
+A default event is called on hidden to cleanup the DOM and strip all backbone and bootstrap event handlers, I am quite new to backbone so don't know if this a good thing to do. I would love feedback on this.
+
+##Documentation
+
+This is a first draft of the documentation, I wrote this extension for a project I am currently working on that makes great use of modal windows. 
+
+I will add more documentation after I have finished this project. In the mean time if you would like to contribute to the project please fork me!
 
 Hope you all enjoy!
