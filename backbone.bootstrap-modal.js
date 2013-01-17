@@ -17,12 +17,9 @@ https://github.com/KingKarl85/Backbone.BootstrapModal
 			this.modalOptions = _.extend({
 				backdrop: 'static',
 				hidden: function(){
-					if(this.modalOptions.destroy){
-						self.remove();
-						self.removeModal();
-					}
-				},
-				destroy: true
+					self.remove();
+					self.removeModal();
+				}
 			}, this.modalOptions, opts);
 
 			options = this.modalOptions;
